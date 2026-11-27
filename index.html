@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Move a viewpoint around two sample floor plans and see which parts of the room remain in sight.">
+  <title>Floorplan Sightline Sketch</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<main>
+  <div class="heading">
+    <div><h1>Floorplan Sightline Sketch</h1><p>Move a viewpoint around two sample floor plans and see which parts of the room remain in sight.</p></div>
+    <a href="https://github.com/netcodermike/floorplan-sightline-sketch">Project source ↗</a>
+  </div>
+  <div class="workspace">
+    <section class="panel stage" aria-label="Project workspace">
+      <svg viewBox="-.35 -.35 10.7 10.7" id="floorplan" class="floorplan" role="img" aria-label="Floor plan with the area visible from the selected viewpoint">
+             <defs><pattern id="room-grid" width="1" height="1" patternUnits="userSpaceOnUse">
+               <path d="M1 0H0V1" fill="none" stroke="#50415d" stroke-width=".025"></path>
+             </pattern></defs>
+             <rect width="10" height="10" rx=".16" fill="#171526"></rect>
+             <rect width="10" height="10" rx=".16" fill="url(#room-grid)" stroke="#81708f" stroke-width=".06"></rect>
+             <polygon id="visibility" fill="#60c9b7" fill-opacity=".39" stroke="#87efdc" stroke-width=".035"></polygon>
+             <path id="walls" fill="none" stroke="#eed7f7" stroke-width=".13" stroke-linecap="round"></path>
+             <circle id="viewpoint" r=".13" fill="#ffcc8c" stroke="#272337" stroke-width=".04"></circle>
+           </svg><p id="reading" role="status"></p>
+    </section>
+    <section class="panel controls" aria-label="Controls">
+      <label for="room">Layout<select id="room"><option value="gallery">Gallery partitions</option><option value="atrium">Open atrium</option></select></label>
+           <label for="east">Viewpoint x <output id="east-value" for="east"></output><input id="east" type="range" min=".25" max="9.75" step=".25" value="4.25"></label>
+           <label for="south">Viewpoint y <output id="south-value" for="south"></output><input id="south" type="range" min=".25" max="9.75" step=".25" value="7.25"></label>
+           <p>Click the plan or move the sliders. The shaded region is visible from the gold dot.</p>
+    </section>
+  </div>
+</main>
+</body>
+</html>
